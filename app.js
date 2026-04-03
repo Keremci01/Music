@@ -2,12 +2,47 @@ const songs = [
   {
     title: "Ballade",
     artist: "Nicolas Berthe",
-    notes: ["SI", "LA", "SI", "SOL", "SI", "LA", "SOL"]
+    notes: ["SI","LA","SI","SOL","SI","LA","SOL","SOL","LA","SI","SOL","SI","LA","SOL"]
   },
   {
     title: "Simple Tune",
     artist: "Unknown",
-    notes: ["SOL", "LA", "SI", "LA", "SOL"]
+    notes: ["SOL","LA","SI","LA","SOL"]
+  },
+  {
+    title: "Melody 1",
+    artist: "Toni Gallart",
+    notes: ["DO","RE","MI","RE","DO","RE","MI","FA","MI"]
+  },
+  {
+    title: "Melody 2",
+    artist: "Toni Gallart",
+    notes: ["MI","FA","SOL","FA","MI","RE","DO"]
+  },
+  {
+    title: "Piano Flow",
+    artist: "Toni Gallart",
+    notes: ["DO","MI","SOL","SI","SOL","MI","DO"]
+  },
+  {
+    title: "Soft Ballad",
+    artist: "Toni Gallart",
+    notes: ["LA","SI","DO","SI","LA","SOL","LA"]
+  },
+  {
+    title: "Dream Notes",
+    artist: "Toni Gallart",
+    notes: ["FA","SOL","LA","SOL","FA","MI","RE"]
+  },
+  {
+    title: "Dark Melody",
+    artist: "Toni Gallart",
+    notes: ["MI","RE","DO","RE","MI","FA","MI"]
+  },
+  {
+    title: "Classic Touch",
+    artist: "Toni Gallart",
+    notes: ["DO","DO","SOL","SOL","LA","LA","SOL"]
   }
 ];
 
@@ -23,7 +58,6 @@ const playBtn = document.getElementById("playBtn");
 let currentSong = null;
 let playing = false;
 
-// artist doldur
 function loadArtists() {
   const artists = [...new Set(songs.map(s => s.artist))];
   artists.forEach(a => {
@@ -34,7 +68,6 @@ function loadArtists() {
   });
 }
 
-// liste render
 function renderSongs() {
   songList.innerHTML = "";
 
@@ -50,9 +83,7 @@ function renderSongs() {
       const div = document.createElement("div");
       div.className = "song";
       div.textContent = `${song.title} - ${song.artist}`;
-
       div.onclick = () => openSong(song);
-
       songList.appendChild(div);
     });
 }
@@ -60,7 +91,6 @@ function renderSongs() {
 function openSong(song) {
   currentSong = song;
   player.classList.remove("hidden");
-
   songTitle.textContent = song.title;
 
   notesContainer.innerHTML = "";
@@ -72,7 +102,6 @@ function openSong(song) {
   });
 }
 
-// play system (highlight animation)
 function playSong() {
   if (!currentSong) return;
 
@@ -100,7 +129,6 @@ function playSong() {
 }
 
 playBtn.onclick = playSong;
-
 search.oninput = renderSongs;
 artistFilter.onchange = renderSongs;
 
